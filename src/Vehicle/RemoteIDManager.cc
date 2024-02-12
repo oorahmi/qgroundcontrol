@@ -23,12 +23,8 @@ QGC_LOGGING_CATEGORY(RemoteIDManagerLog, "RemoteIDManagerLog")
 #define SENDING_RATE_MSEC 1000
 #define ALLOWED_GPS_DELAY 5000
 #define RID_TIMEOUT 2500 // Messages should be arriving at 1 Hz, so we set a 2 second timeout
-#define SELF_ID_DESCRIPTION_SIZE 23
-#define OPERATOR_ID_SIZE 20
-#define ID_OR_MAC_SIZE 20
 
-
-const uint8_t* RemoteIDManager::_id_or_mac_unknown = new uint8_t[ID_OR_MAC_SIZE]();
+const uint8_t* RemoteIDManager::_id_or_mac_unknown = new uint8_t[MAVLINK_MSG_OPEN_DRONE_ID_OPERATOR_ID_FIELD_ID_OR_MAC_LEN]();
 
 RemoteIDManager::RemoteIDManager(Vehicle* vehicle)
     : QObject               (vehicle)
