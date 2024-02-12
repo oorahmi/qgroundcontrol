@@ -233,7 +233,7 @@ const char* RemoteIDManager::_getSelfIDDescription()
     }
 
     QByteArray descriptionBuffer = descriptionToSend.toLocal8bit();
-    descriptionBuffer.resize(SELF_ID_DESCRIPTION_SIZE);
+    descriptionBuffer.resize(MAVLINK_MSG_OPEN_DRONE_ID_SELF_ID_FIELD_DESCRIPTION_LEN);
     return descriptionBuffer.constData();
 }
 
@@ -246,7 +246,7 @@ void RemoteIDManager::_sendOperatorID()
         mavlink_message_t msg;
 
         QByteArray bytesOperatorID = (_settings->operatorID()->rawValue().toString()).toLocal8Bit();
-        bytesOperatorID.resize(OPERATOR_ID_SIZE);
+        bytesOperatorID.resize(MAVLINK_MSG_OPEN_DRONE_ID_OPERATOR_ID_FIELD_OPERATOR_ID_LEN);
 
         mavlink_msg_open_drone_id_operator_id_pack_chan(
                                                     _mavlink->getSystemId(),
